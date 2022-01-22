@@ -101,7 +101,7 @@ render(){
       (
     <Container>
       <p className="text-center">
-        You can add a new Guilds into the game if you meet these conditions:
+        You can add new Guilds into the game if you meet these conditions:
         <br />- You hold more than 50 Standard Traveler Loots;
         <br />- (or) You have minted a Traveler Loot for Patrons;
         <Popup content='Patrons are claimable by calling claimByPatrons() function on etherscan and paying the "priceForPatrons" price. Check the contract for details.'
