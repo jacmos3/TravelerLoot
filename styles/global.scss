@@ -23,3 +23,13 @@ h6 {
   font-weight: normal;
   font-family: "EB Garamond", serif, sans-serif;
 }
+.pdfContainer{
+    height: 700px;
+    width: 100%;
+    font-family: arial;
+    font-size: 24px;
+    outline: dashed 1px black;
+    /* Center child horizontally*/
+    display: flex;
+    justify-content: center;
+}

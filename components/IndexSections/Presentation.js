@@ -19,7 +19,7 @@ render(){
         />
         <div className="sm:px-4">
           <div className={styles.home__cta}>
-            <h1>Traveler Loot</h1>
+            <h1 className="interline">Traveler Loot</h1>
             <p className="text-xl sm:text-2xl text-white">
               <br />
               Traveler Loot is a <a target= "_blank" href="https://www.lootproject.com/">Loot</a> derivative for the travel industry, generated and stored on chain.
