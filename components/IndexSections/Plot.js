@@ -26,8 +26,6 @@ render(){
         <div className="px-4 sm:px-20 py-8 rounded-2xl text-center md:w-2/3">
           <span className="uppercase sm:text-xl tracking-widest">Plot</span>
           <h1 className="text-center mt-4">Context and Details</h1>
-          <a href="../Traveler Loot - The Story.pdf">Download the pdf here if your browser doesn't support the embedded version</a>
-
           <div className="pdfContainer">
            <Document file="../Traveler Loot - The Story.pdf" onLoadSuccess={this.onDocumentLoad} >
            <Page size="A4" pageNumber={pageNumber} />
@@ -44,6 +42,7 @@ render(){
             onPageChange={this.handlePaginationChange}
             totalPages={numPages}
           />
+          <a href="../Traveler Loot - The Story.pdf">Download PDF</a>
 
         </div>
       </div>
