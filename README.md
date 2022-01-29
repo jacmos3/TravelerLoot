@@ -44,7 +44,7 @@ There are 4 kinds of Traveler Loot NFTs:
 
 ## PRIORITY FOR ELIGIBLE LOOT PROJECT OWNERS
 
-The owners of whitelisted Loot projects have the **elegibility** to mint a Traveler Loot in special edition **Guild NFT**, opening the doors for other possible future airdrops or advantages.
+The holders of whitelisted Loot projects have the **eligibility** to mint a Traveler Loot in special edition **Guild NFT**, opening the doors for other possible future airdrops or advantages.
 The qualification for the Loot projects is based on a whitelisting process.
 Projects can enter the whitelist in three different ways:
 By yourself:
