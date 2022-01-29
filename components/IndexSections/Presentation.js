@@ -50,7 +50,7 @@ render(){
             </a>
 
           </div>
-          <div><a href={this.props.state.etherscan} target="_blank">VIEW CONTRACT</a></div>
+          <div><a href={`${this.props.state.etherscan}#code`} target="_blank">VIEW CONTRACT</a></div>
           <br />
           <div className="text-center">
             <a href="#Start">
