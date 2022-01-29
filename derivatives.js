@@ -6,12 +6,6 @@ export const derivatives = [
     target:'_blank'
   },
   {
-    header:"0x83f1d1396b19fed8fbb31ed189579d07362d661d",
-    content: 'Hymns (For Adventurers)',
-    href: 'https://opensea.io/collection/hymns',
-    target:'_blank'
-  },
-  {
     header:"0x7afe30cb3e53dba6801aa0ea647a0ecea7cbe18d",
     content: 'Realms (for Adventurers)',
     href: 'https://opensea.io/collection/lootrealms',
@@ -35,19 +29,11 @@ export const derivatives = [
     href: 'https://opensea.io/collection/lootcreatures',
     target:'_blank'
   },
-
-
   {//https://discord.com/channels/880899217973968917/881141224776531998/933606922584727552
     header:"0x8db687aceb92c66f013e1d614137238cc698fedb",
     content: 'Genesis Adventurers (for Loot)',
     href: 'https://opensea.io/collection/genesisadventurer',
     target:'_blank'
-  },
-  {//https://discord.com/channels/880899217973968917/881141224776531998/933606922584727552
-    header:"0xf4b6040a4b1b30f1d1691699a8f3bf957b03e463",
-    content: 'Genesis Mana (for Loot)',
-    href: 'https://opensea.io/collection/genesis-mana',
-    target:'_blank'
-  },
+  }
 
 ];
