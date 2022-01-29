@@ -27,17 +27,17 @@ render(){
         <div className="px-4 sm:px-20 py-8 rounded-2xl text-center md:w-2/3">
           <span className="uppercase sm:text-xl tracking-widest">Plot</span>
           <h1 className="text-center mt-4">Context and Details</h1>
-            <a href="../Traveler Loot - The Story.pdf">Download PDF</a>
+          <a href="../Traveler Loot - The Story.pdf">Download PDF</a>
           <div className="pdfContainer">
            <Document
-           file="../Traveler Loot - The Story.pdf"
-           onLoadSuccess={this.onDocumentLoad}
-           externalLinkTarget = {"_blank"}
-           renderMode = {"svg"}
+             file="../Traveler Loot - The Story.pdf"
+             onLoadSuccess={this.onDocumentLoad}
+             externalLinkTarget = {"_blank"}
+             renderMode = {"svg"}
            >
-           <Page
-            pageNumber={pageNumber}
-           />
+             <Page
+                pageNumber={pageNumber}
+             />
            </Document>
          </div>
          <Pagination
