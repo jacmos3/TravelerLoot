@@ -79,10 +79,6 @@ render(){
       </div>
 
       <div className="text-center sm:text-2xl my-4 sm:w-2/3 mx-auto px-4">
-      <Message
-          header='Please Note:'
-          content="Since claims have been not yet activated, these guilds have not been whitelisted yet. Whitelisting will happen before activation by contract's owner."
-        />
         <div>
            If you own one NFT of these Projects, then you are in a Guild:
           <br />

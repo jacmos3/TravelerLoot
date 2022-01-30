@@ -15,7 +15,7 @@ render(){
       <div className="w-full sm:w-1/2">
       <Message
           header='Please Note:'
-          content="Contract has been deployed but mintings are not yet activated! Please do not try to interact with the contract, or your transaction will fail!"
+          content="Minting Activation is planned to be fired on Feb 1st, and will be effective after 17280 blocks (around Feb 4th) due of the lock time period! Please do not try to interact with the contract during the lock time, or your transaction will fail! "
         />
         <div className="sm:px-4">
           <div className={styles.home__cta}>
