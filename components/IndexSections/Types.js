@@ -56,9 +56,9 @@ render(){
               <Card.Header>Traveler Loot for Patrons</Card.Header>
               <Card.Meta >Supply: undefined but limited</Card.Meta>
               <Card.Description>
-                Everybody can claim one (and only one) Traveler Loot for Patron, but it's not for free.
+                Everybody can claim one (and only one) Traveler Loot for Patron, but:
                 <br />It has a dynamic price, starting from 1 ether.
-                <br />It's price is designed to increase as much as the project gains popularity and utility. The supply is leaded by the price unaffordability by design.
+                <br />Its price is designed to increase as much as the project gains popularity and utility. The supply is leaded by the price unaffordability by design.
               </Card.Description>
             </Card.Content>
             <Card.Content extra>
