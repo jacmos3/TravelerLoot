@@ -27,7 +27,7 @@ class Presentation extends Component{
       .then();
       this.setState({"height":result});
 
-      console.log(this.state.height);
+      //console.log(this.state.height);
   }
 render(){
 
