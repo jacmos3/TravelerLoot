@@ -12,6 +12,7 @@ class Plot extends Component{
   state = {
     numPages: null,
     pageNumber: 1,
+    numPages:0
   }
   onDocumentLoad = ({ numPages }) => {
    this.setState({ numPages });
@@ -46,10 +47,10 @@ render(){
             boundaryRange={0}
             ellipsisItem={null}
             firstItem={1}
-            lastItem={numPages}
+            lastItem={this.state.numPages}
             siblingRange={1}
             onPageChange={this.handlePaginationChange}
-            totalPages={numPages}
+            totalPages={this.state.numPages}
           />
 
         </div>
