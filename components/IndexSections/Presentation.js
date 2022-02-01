@@ -1,62 +1,31 @@
 import React, {Component} from 'react';
 import styles from "../../styles/pages/INDEX.module.scss"; // Styles
 import {Image,Button,Message,Statistic} from 'semantic-ui-react';
-import NextCors from 'nextjs-cors';
-
+const Web3 = require('web3');
 
 class Presentation extends Component{
   constructor(){
     super();
   }
 
+    state = {height:0,target:14135801}
+
     componentDidMount() {
-
-
-      this.UserList();
+      this.checkBlock();
         this.interval = setInterval(() => this.UserList(), 10000);
-
-
     }
 
     componentWillUnmount() {
       clearInterval(this.interval);
     }
 
-  state = {height:0,target:14135801}
+   async checkBlock() {
+      var web3 = new Web3('https://mainnet.infura.io/v3/078b180cf49e4531891cb1168cf4eb51');
+      var result = await web3.eth.getBlockNumber()
+      .then();
+      this.setState({"height":result});
 
-  timer(){
-    const timer = setTimeout(() => {
-      this.UserList();
-    }, 2000);
-  }
-
-  async handler(req, res) {
-     // Run the cors middleware
-     // nextjs-cors uses the cors package, so we invite you to check the documentation https://github.com/expressjs/cors
-     await NextCors(req, res, {
-        // Options
-        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-        origin: '*',
-        optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-     });
-
-     // Rest of the API logic
-     res.json({ message: 'Hello NextJs Cors!' });
-  }
-
-   UserList() {
-
-     console.log("called");
-
-     fetch("https://api.blockcypher.com/v1/eth/main", {"method": "GET"})
-     .then(response => response.json())
-     .then(response => {
-       this.setState({height:response.height});
-       console.log(response)
-     })
-     .catch(err => {
-       console.log(err);
-     });
+      console.log(this.state.height);
   }
 render(){
 
