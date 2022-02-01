@@ -12,7 +12,7 @@ class Presentation extends Component{
 
     componentDidMount() {
       this.checkBlock();
-        this.interval = setInterval(() => this.UserList(), 10000);
+        this.interval = setInterval(() => this.checkBlock(), 10000);
     }
 
     componentWillUnmount() {
