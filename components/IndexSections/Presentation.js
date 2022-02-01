@@ -44,7 +44,7 @@ render(){
                 Mintings will be possible after block #14135801! Please do not try to interact before it or your transaction will fail!
               </p>
               <h2>{this.state.height - this.state.target} blocks to go!</h2>
-              <h3><a href="https://etherscan.io/block/countdown/14135801" target="_blank"> See Live on Etherscan</a></h3>
+              <h3><a href="https://etherscan.io/block/countdown/14135801" target="_blank"> Watch live on Etherscan</a></h3>
             </Message>
 
         </div >)
