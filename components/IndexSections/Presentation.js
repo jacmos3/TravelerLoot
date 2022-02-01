@@ -12,7 +12,9 @@ class Presentation extends Component{
 
     componentDidMount() {
       this.checkBlock();
+      if (height <= target){
         this.interval = setInterval(() => this.checkBlock(), 10000);
+      }
     }
 
     componentWillUnmount() {
