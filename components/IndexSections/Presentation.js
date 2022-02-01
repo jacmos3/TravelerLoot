@@ -12,7 +12,7 @@ class Presentation extends Component{
 
     componentDidMount() {
       this.checkBlock();
-      if (height <= target){
+      if (this.state.height <= this.state.target){
         this.interval = setInterval(() => this.checkBlock(), 10000);
       }
     }
@@ -38,11 +38,14 @@ render(){
 
         {this.state.height - this.state.target <= 0 ? (
           <div>
-          <h2>{this.state.height - this.state.target} blocks to go!</h2>
-          <Message
-              header='Please Note:'
-              content="Mintings will be possible starting from block #14135801! Please do not try to interact with the contract during the lock time, or your transaction will fail! "
-            />
+            <Message warning>
+              <Message.Header>Please note:</Message.Header>
+              <p>
+                Mintings will be possible after block #14135801! Please do not try to interact before it or your transaction will fail!
+              </p>
+              <h2>{this.state.height - this.state.target} blocks to go!</h2>
+              <h3><a href="https://etherscan.io/block/countdown/14135801" target="_blank"> See Live on Etherscan</a></h3>
+            </Message>
 
         </div >)
           : ""}
