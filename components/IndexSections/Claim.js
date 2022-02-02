@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container,Button,Form,Popup,Icon,Input,Message,Card,Image,Segment,Dimmer,Loader} from 'semantic-ui-react';
+import {Container,Button,Card,Segment,Dimmer,Loader, Message, Form} from 'semantic-ui-react';
 import styles from "../../styles/pages/INDEX.module.scss"; // Styles
 import TravelerLoot from '../../ethereum/build/TravelerLoot.sol.json';
 class Claim extends Component{
@@ -108,6 +108,7 @@ render(){
                 <br />
                 <br />
               </p>
+                <Form  error={!!this.state.errorMessage}>
             {
               this.props.state.web3Settings.isWeb3Connected
               ? this.props.state.web3Settings.networkId == this.props.state.web3Settings.deployingNetworkId
@@ -115,6 +116,7 @@ render(){
                 (
                     <div className={styles.home__feature}>
                       <div className="">
+                        <Message error header="Oops!" content = {this.state.errorMessage} />
                       <Button  loading = {this.state.loading > 0} secondary onClick = {this.onSubmit}>Claim</Button>
                       <Button  secondary onClick = {this.fetchNFTList}  type="button" basic color='black' >Refresh</Button>
                       <a href="#guildsclaim"><Button  secondary  type="button" basic color='white' >Are you in a guild?</Button></a>
@@ -165,7 +167,7 @@ render(){
                     </div>
                   )
             }
-
+            </Form>
         </div>
       </div>
 
