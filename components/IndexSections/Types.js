@@ -71,7 +71,7 @@ render(){
     <Container>
     <p>
     Traveler Loot Project is a layer built on top of <a href= {this.props.state.OGLOOTWeb}>🔗Loot Project</a> and other whitelisted contracts (we call them <a href="#Guilds">🔗Guilds</a>).
-    By holding NFTs of the whitelisted contracts, you have access to the <span className="italic">Traveler Loot for Guilds</span> claims. Project's whitelisting is open <a target="_blank" href={`${this.props.state.etherscan}#writeContract`}>🔗here</a>.
+    By holding NFTs of the whitelisted contracts, you have access to the <span className="italic">Traveler Loot for Guilds</span> claims. Project's whitelisting is open <a href="#Guilds">🔗here</a>.
     </p>
     </Container>
     </div>

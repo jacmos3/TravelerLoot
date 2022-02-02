@@ -50,8 +50,8 @@ class Guilds extends Component{
 
 render(){
   var addGuildsCard = [{
-    header:"Add new Guilds to the Whitelist...",
-      content: 'Add new Guilds to the Whitelist...',
+    header:"Or you can add new Guilds to the Whitelist...",
+      content: 'Or you can add new Guilds to the Whitelist...',
       onClick:this.hideShowAddingGuilds,
       className:"middle"
     }];
@@ -104,7 +104,7 @@ render(){
           size='tiny'
           trigger={<Icon name='question circle' color='grey'size='small' circular />}
         />
-        <br />- (or) You are the owner of Traveler Loot's Smart Contract.
+        <br />- (or) Getting in touch with 🔗<a href={this.props.state.discord}>Trips Community</a> and proposing your idea and your reason why.
         <br />
         <br />
         <div ><Button target="_blank" href={`${this.props.state.etherscan}#writeContract`} secondary >Etherscan</Button></div>
@@ -128,7 +128,7 @@ render(){
                   </span>
                 <Form onSubmit = {this.onSubmit} error={!!this.state.errorMessage}>
                   <Form.Field>
-                    <h2>Claim now a Traveler Loot for Guilds</h2>
+                    <h2 >Claim now a Traveler Loot for Guilds</h2>
                     <p>
 
                       <br />Select the address of your Guild...

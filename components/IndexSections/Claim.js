@@ -117,6 +117,7 @@ render(){
                       <div className="">
                       <Button  loading = {this.state.loading > 0} secondary onClick = {this.onSubmit}>Claim</Button>
                       <Button  secondary onClick = {this.fetchNFTList}  type="button" basic color='black' >Refresh</Button>
+                      <a href="#guildsclaim"><Button  secondary  type="button" basic color='white' >Are you in a guild?</Button></a>
                       <div style={{padding:"15px"}}>
                         <Card.Group itemsPerRow={3} centered items={this.state.all} />
                       </div>
