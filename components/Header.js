@@ -10,7 +10,11 @@ class Header extends Component{
   constructor(props) {
      super(props)
   }
-
+  truncateAddress(address){
+    const begin = address.substring(0, 6).concat("...");
+    const end = address.substring(address.length-6);
+    return begin+end;
+  }
   render(){
     return (
       <div className="w-full flex justify-between py-2 bg-black px-4 ">
@@ -41,7 +45,7 @@ class Header extends Component{
         this.props.state.isWeb3Connected
         ? (
             <Button onClick={this.props.disconnect}>
-              {this.props.state.account}
+              {this.truncateAddress(this.props.state.account)}
             </Button>
         )
 
