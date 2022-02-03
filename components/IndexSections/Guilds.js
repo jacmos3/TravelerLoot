@@ -132,7 +132,7 @@ render(){
                     <p>
 
                       <br />Select the address of your Guild...
-                      <br />And provide the relative's tokenId you own!
+                      <br />And insert the tokenId you own!
                       <Popup content="Guilds' mintings are limited to 900 units and are regulated by modulo operation (mod 900),
                       which means that your Loot-Derivative's tokenID targets a Traveler Loot ID which may be targeted by other
                       Guilds' tokenID too. The fastest who claims the targeted Traveler Loot, revokes any third's claiming right for the same Traveler Loot ID."
