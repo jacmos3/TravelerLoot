@@ -38,7 +38,6 @@ class Claim extends Component{
 
 
   fetchNFTList = async () => {
-    console.log("hey");
     this.setState({loading:this.state.loading+1, errorMessage:''})
     try{
       const accounts= await this.props.state.web3.eth.getAccounts();

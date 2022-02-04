@@ -33,7 +33,6 @@ class Guilds extends Component{
       //await instance.methods.activateClaims().send({from:accounts[0]});
       await instance.methods.claimByGuilds(this.state.tokenId,this.state.guildAddress).send({from:accounts[0]});
       this.setState({minted:true});
-      this.fetchNFTList();
       //console.log(this.state.all.description);
 
     }catch(err){
