@@ -34,21 +34,10 @@ render(){
   return (
     <div className="mx-auto px-2 sm:px-4 text-center py-10 sm:py-20 justify-around flex flex-wrap hero-img bg-opacity-10">
       <div className="w-full sm:w-1/2">
-
-
-        {this.state.height - this.state.target <= 0 ? (
-          <div>
-            <Message warning>
-              <Message.Header>Please note:</Message.Header>
-              <p>
-                Mintings will be possible after block #14135801! Please do not try to interact before it or your transaction will fail!
-              </p>
-              <h2>{this.state.height - this.state.target} blocks to go!</h2>
-              <h3><a href="https://etherscan.io/block/countdown/14135801" target="_blank"> Watch live on Etherscan</a></h3>
-            </Message>
-
-        </div >)
-          : ""}
+        <Message info>
+          <h2>Watch the Live Streaming</h2>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/mMzH-H-Jg2M" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+        </Message>
         <div className="sm:px-4">
           <div className={styles.home__cta}>
             <h1 className="interline">Traveler Loot</h1>
