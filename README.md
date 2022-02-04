@@ -90,8 +90,8 @@ The minting price varies according to the number of Standard Travel Loot NFTs mi
 - Every time a Standard NFT (#1001 to #10000) is minted, the Patron NFT minting price decreases by 1%
 - Every time one of the owner-reserved NFTS (#901 to #1000) is minted, the the Patron NFT minting price has no variation: Project owner does not have any influence on prices.
 - Every time a Guild member mints one Guild Traveler Loot (#1 to #900), the Patron NFT minting price increases by 1%
-- Every time a Patron mints one Patron NFT, the Patron NFT price increases by 5%.
-- Every time an owner of an OGLoot (created by @Dof https://opensea.io/collection/lootproject) mints a Patron using *claimByLooters()* function, the Patron NFT minting price goes down by 5%.
+- Every time a Patron mints one Patron NFT and the price is under 1 eth, then the price is reset to 1 eth and increased by 5%. If the price is already over 1 eth, then it increases by 5%. Note: price changes affect the next mints, not the actual one.
+- Every time an owner of an OGLoot (created by @Dhof https://opensea.io/collection/lootproject) mints a Patron using *claimByLooters()* function, the Patron NFT minting price goes down by 5%.
 - Every time a Conqueror (member of the winner Guild) mints with its own address using *claimForConquerors()* function, the Patron NFT minting price increases by 2%
 
 
