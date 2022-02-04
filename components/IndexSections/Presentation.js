@@ -39,6 +39,7 @@ render(){
           <Embed
              id='mMzH-H-Jg2M'
              source='youtube'
+             placeholder='../../img/preview.png'
            />
         </Message>
         <div className="sm:px-4">
