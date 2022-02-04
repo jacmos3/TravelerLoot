@@ -18,7 +18,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 class MyDapp extends Component{
   state = {
     OGLOOTWebsite:"https://www.lootproject.com/",
-    opensea:"https://www.opensea.io/",
+    opensea:"https://opensea.io/collection/travelerloot",
     etherscan:"https://etherscan.io/address/0x38cd9992e44064cb8bd68cdf17d164b82b25277c",
     twitter:"https://twitter.com/tripscommunity",
     website:"https://www.travelerloot.com",
