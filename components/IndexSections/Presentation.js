@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styles from "../../styles/pages/INDEX.module.scss"; // Styles
-import {Image,Button,Message,Statistic} from 'semantic-ui-react';
+import {Image,Button,Message,Statistic,Embed} from 'semantic-ui-react';
 const Web3 = require('web3');
 
 class Presentation extends Component{
@@ -36,7 +36,10 @@ render(){
       <div className="w-full sm:w-1/2">
         <Message info>
           <h2>Watch the Live Streaming</h2>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/mMzH-H-Jg2M" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+          <Embed
+             id='mMzH-H-Jg2M'
+             source='youtube'
+           />
         </Message>
         <div className="sm:px-4">
           <div className={styles.home__cta}>
