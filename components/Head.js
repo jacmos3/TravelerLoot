@@ -10,7 +10,6 @@ function Head() {
       {/* Primary Meta Tags */}
       <title>Traveler Loot</title>
       <meta name="title" content="Traveler Loot" />
-      <meta name="robots" content="noindex" />
       <meta
         name="description"
         content="Traveler Loot is randomized character generated and stored on chain."
