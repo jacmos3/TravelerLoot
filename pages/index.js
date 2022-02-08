@@ -25,7 +25,7 @@ class MyDapp extends Component{
     discord:"https://discord.gg/tripscommunity",
     tripsCommunity:"https://www.tripscommunity.com",
     web3Settings:{
-      infura:"8886e44c58d547f5bbbd81e0460296a2",
+      infura:"078b180cf49e4531891cb1168cf4eb51",
       isWeb3Connected:false,
       deployingNetworkId : 1, //1 ethereum, 4 rinkeby
       deployingNetworkName : "Ethereum Mainnet"
