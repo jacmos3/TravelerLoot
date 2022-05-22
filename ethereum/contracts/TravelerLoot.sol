@@ -1296,6 +1296,7 @@ contract TravelerLoot is ERC721Enumerable, ReentrancyGuard, Ownable {
     string private constant GUILD = "GUILD";
     string private constant PATRON = "PATRON";
     string private constant CONQUEROR = "CONQUEROR";
+    string private constant OG_LOOT = "Loot (for Adventurers)";
     uint160 private constant INITIAL_PRICE_FOR_PATRONS = 1 ether;
     string private constant ERROR_TOKEN_ID_INVALID = "Token ID invalid";
     string private constant ERROR_ADDRESS_NOT_VERIFIED = "Address not verified. Try another";
@@ -1384,12 +1385,12 @@ contract TravelerLoot is ERC721Enumerable, ReentrancyGuard, Ownable {
 
       detailsByAddress[PH_USERS] = Traveler({color:BLACK,familyType:"",familyName:"",counter:0,verified:true});
       detailsByAddress[PH_PATRONS] = Traveler({color:"#F87151",familyType:PATRON,familyName:"",counter:0,verified:true});
-      detailsByAddress[PH_OG_LOOT] = Traveler({color:GOLD,familyType:PATRON,familyName:"Loot (for Adventurers)",counter:0,verified:true});
+      detailsByAddress[PH_OG_LOOT] = Traveler({color:GOLD,familyType:PATRON,familyName:OG_LOOT,counter:0,verified:true});
       detailsByAddress[PH_CONQUERORS] = Traveler({color:WHITE,familyType:CONQUEROR,familyName:"",counter:0,verified:true});
       detailsByAddress[PH_OWNER] = Traveler({color:BLACK,familyType:" ",familyName:"",counter:0,verified:true});
 
       whiteListedGuilds.push(ADDRESS_OG_LOOT);
-      detailsByAddress[ADDRESS_OG_LOOT] = Traveler({color:BLACK,familyType:PLATINUM,familyName:"LOOT",counter:0,verified:true});
+      detailsByAddress[ADDRESS_OG_LOOT] = Traveler({color:PLATINUM,familyType:GUILD,familyName:OG_LOOT,counter:0,verified:true});
     }
 
     modifier checkStart() {
