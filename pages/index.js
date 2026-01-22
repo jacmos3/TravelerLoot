@@ -8,8 +8,6 @@ import Guilds from '../components/IndexSections/Guilds.js';
 import Elements from '../components/IndexSections/Elements.js';
 
 import {Header} from 'semantic-ui-react';
-//import web3 from '../ethereum/web3';
-import {Router} from '../routes';
 import TravelerLoot from '../ethereum/build/TravelerLoot.sol.json';
 import Web3 from "web3";
 import Web3Modal from "web3modal";
@@ -25,7 +23,7 @@ class MyDapp extends Component{
     discord:"https://discord.gg/tripscommunity",
     tripsCommunity:"https://www.tripscommunity.com",
     web3Settings:{
-      infura:"078b180cf49e4531891cb1168cf4eb51",
+      infura: process.env.NEXT_PUBLIC_INFURA_ID || "",
       isWeb3Connected:false,
       deployingNetworkId : 1, //1 ethereum, 4 rinkeby
       deployingNetworkName : "Ethereum Mainnet"
@@ -45,12 +43,10 @@ class MyDapp extends Component{
     //console.log(derivatives);
   }
   update = async (nextState)=>{
-    console.log("nextState: "+JSON.stringify(nextState));
     this.setState(nextState);
   }
 
   disconnect = (event) =>{
-      console.log("disconnect");
       var web3Settings = this.state.web3Settings;
       web3Settings.isWeb3Connected = false;
       this.setState({web3Settings:web3Settings});
@@ -88,24 +84,20 @@ class MyDapp extends Component{
       try {
         provider = await web3Modal.connect();
       } catch(e) {
-        console.log("Could not get a wallet connection", e);
         return;
       }
 
       var web3=new Web3(provider);
 
       provider.on('accountsChanged', function (accounts) {
-        console.log("account changed "+accounts[0]);
         window.location.reload();
       })
 
       provider.on('chainChanged', function (networkId) {
-        console.log("chain changed: reloading page");
         window.location.reload();
       })
 
       provider.on("disconnect",function() {
-        console.log("disconnecting");
         provider.close();
         web3Modal.clearCachedProvider();
         provider=null;
@@ -132,8 +124,6 @@ class MyDapp extends Component{
        web3Settings.ethBalance = ethBalance;
        web3Settings.isWeb3Connected = accounts.length > 0;
        this.setState({web3Settings:web3Settings});
-
-       console.log(this.state.web3Settings.isWeb3Connected);
     }
 
 

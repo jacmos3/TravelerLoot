@@ -1443,7 +1443,7 @@ contract TravelerLoot is ERC721Enumerable, ReentrancyGuard, Ownable {
     function claimByPatrons() external payable nonReentrant checkStart{
       require(msg.value >= priceForPatrons, ERROR_LOW_VALUE);
       if (priceForPatrons < INITIAL_PRICE_FOR_PATRONS){
-        priceForPatrons == INITIAL_PRICE_FOR_PATRONS;
+        priceForPatrons = INITIAL_PRICE_FOR_PATRONS;
       }
       // After this mint, the price for next patrons will be increased by 5%
       reservedMinting(PH_PATRONS, 5, true);
@@ -1608,13 +1608,15 @@ contract TravelerLoot is ERC721Enumerable, ReentrancyGuard, Ownable {
       return (winningLoot, winningCount);
     }
 
-    /// @notice                     Call this function to get a random color using block difficulty, timestamp as seed
+    /// @notice                     Call this function to get a random color using block data as seed
+    /// @dev                        WARNING: This randomness is NOT secure for high-value operations.
+    ///                             Consider using Chainlink VRF for production-grade randomness.
     /// @return                     A string containing the HEX number of a random color
     function pickAColor() internal view returns (string memory){
         string[16] memory list = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
         string memory color = "#";
         for (uint8 i=0; i<6;i++){
-          uint rand = uint(keccak256(abi.encodePacked(block.difficulty, block.timestamp, i )));
+          uint rand = uint(keccak256(abi.encodePacked(block.prevrandao, block.timestamp, msg.sender, i)));
           color = string(abi.encodePacked(color,list[rand % list.length]));
         }
         return color;

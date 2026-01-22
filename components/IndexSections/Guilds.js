@@ -20,23 +20,35 @@ class Guilds extends Component{
   }
 
   hideShowAddingGuilds = async()=>{
-    console.log("clicked");
     this.setState({addGuildsVisibility:!this.state.addGuildsVisibility});
   }
   onSubmit = async (event) => {
     event.preventDefault();
-    console.log(this.state.guildAddress);
+
+    // Input validation
+    const tokenId = parseInt(this.state.tokenId, 10);
+    if (isNaN(tokenId) || tokenId < 1 || tokenId > 10000) {
+      this.setState({errorMessage: 'Token ID must be a number between 1 and 10000'});
+      return;
+    }
+
+    if (!this.state.guildAddress || !/^0x[a-fA-F0-9]{40}$/.test(this.state.guildAddress)) {
+      this.setState({errorMessage: 'Please select a valid guild address'});
+      return;
+    }
+
     this.setState({loading:this.state.loading+1, errorMessage:''})
     try{
       const accounts= await this.props.state.web3.eth.getAccounts();
       const instance = new this.props.state.web3.eth.Contract(TravelerLoot.TravelerLoot.abi, this.props.state.web3Settings.contractAddress );
-      //await instance.methods.activateClaims().send({from:accounts[0]});
-      await instance.methods.claimByGuilds(this.state.tokenId,this.state.guildAddress).send({from:accounts[0]});
+      await instance.methods.claimByGuilds(tokenId, this.state.guildAddress).send({from:accounts[0]});
       this.setState({minted:true});
-      //console.log(this.state.all.description);
 
     }catch(err){
-      this.setState({errorMessage: err.message});
+      const errorMsg = err.message && err.message.length > 200
+        ? err.message.substring(0, 200) + '...'
+        : err.message || 'Transaction failed';
+      this.setState({errorMessage: errorMsg});
     }
     this.setState({loading:this.state.loading-1});
   }

@@ -31,7 +31,10 @@ class Claim extends Component{
       //console.log(this.state.all.description);
 
     }catch(err){
-      this.setState({errorMessage: err.message});
+      const errorMsg = err.message && err.message.length > 200
+        ? err.message.substring(0, 200) + '...'
+        : err.message || 'Transaction failed';
+      this.setState({errorMessage: errorMsg});
     }
     this.setState({loading:this.state.loading-1});
   }
@@ -47,7 +50,7 @@ class Claim extends Component{
           return JSON.parse(result);
       })
       .catch((error) =>{
-        console.log(error);
+        // Error handled silently
       })
       let all = [];
       for (let index = 0; index < lastUserIndex; index++){
@@ -56,7 +59,7 @@ class Claim extends Component{
           return result;
         })
         .catch((error)=>{
-          console.log(error);
+          // Error handled silently
         });
 
         let uri = await instance.methods.tokenURI(tokenId).call()
@@ -65,19 +68,20 @@ class Claim extends Component{
 
         })
         .catch((error)=>{
-          console.log(error);
+          // Error handled silently
         });
 
         let element = {"header": uri.name,/*"description":uri.description,*/"image":uri.image};
         all.push(element);
-        console.log(uri);
         this.setState({all:all});
       }
       this.setState({minted:true});
-      //console.log(this.state.all.description);
 
     }catch(err){
-      this.setState({errorMessage: err.message});
+      const errorMsg = err.message && err.message.length > 200
+        ? err.message.substring(0, 200) + '...'
+        : err.message || 'Failed to fetch NFT list';
+      this.setState({errorMessage: errorMsg});
     }
     this.setState({loading:this.state.loading-1});
   }

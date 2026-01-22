@@ -1,10 +1,7 @@
 import React,{Component} from 'react';
 import {Button} from 'semantic-ui-react';
-import {Link} from '../routes';
+import Link from 'next/link';
 import styles from "../styles/components/Layout.module.scss"; // Styles
-import { useRouter } from "next/router"; // Routing
-import Web3 from "web3";
-import Web3Modal from "web3modal";
 
 class Header extends Component{
   constructor(props) {
@@ -20,8 +17,8 @@ class Header extends Component{
       <div className="w-full flex justify-between py-2 bg-black px-4 ">
       {/* Main logo */}
       <div className={styles.header__logo}>
-        <Link href="/">
-          <h2>Traveler Loot</h2>
+        <Link href="/" legacyBehavior>
+          <a><h2>Traveler Loot</h2></a>
         </Link>
       </div>
 
@@ -32,8 +29,8 @@ class Header extends Component{
             // For each link, render link
             return (
               <li className="self-center text-xl" key={i}>
-                <Link href={path}>
-                    {name}
+                <Link href={path} legacyBehavior>
+                  <a>{name}</a>
                 </Link>
               </li>
             );
