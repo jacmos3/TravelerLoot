@@ -8,6 +8,7 @@ class Header extends Component{
      super(props)
   }
   truncateAddress(address){
+    if (!address || address.length < 12) return address || '';
     const begin = address.substring(0, 6).concat("...");
     const end = address.substring(address.length-6);
     return begin+end;

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import styles from "../../styles/pages/INDEX.module.scss"; // Styles
-import {Image,Button,Message,Statistic,Embed} from 'semantic-ui-react';
-const Web3 = require('web3');
+import {Image,Button,Message,Embed} from 'semantic-ui-react';
 
 class Presentation extends Component{
   constructor(){
