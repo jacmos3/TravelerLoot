@@ -45,7 +45,7 @@ class Guilds extends Component{
     try {
       const signer = walletService.getSigner();
       if (!signer) {
-        throw new Error('Wallet not connected');
+        throw new Error('Wallet not connected. Please connect your wallet first.');
       }
 
       const contract = new ethers.Contract(
@@ -57,11 +57,20 @@ class Guilds extends Component{
       const tx = await contract.claimByGuilds(tokenId, this.state.guildAddress);
       await tx.wait();
 
-      this.setState({minted: true});
+      this.setState({minted: true, tokenId: '', guildAddress: ''});
     } catch(err) {
-      const errorMsg = err.message && err.message.length > 200
-        ? err.message.substring(0, 200) + '...'
-        : err.message || 'Transaction failed';
+      let errorMsg = 'Transaction failed';
+
+      if (err.code === 4001) {
+        errorMsg = 'Transaction rejected by user';
+      } else if (err.code === 'INSUFFICIENT_FUNDS') {
+        errorMsg = 'Insufficient funds for transaction';
+      } else if (err.message) {
+        errorMsg = err.message.length > 150
+          ? err.message.substring(0, 150) + '...'
+          : err.message;
+      }
+
       this.setState({errorMessage: errorMsg});
     }
 
@@ -76,7 +85,10 @@ class Guilds extends Component{
   render(){
     const { web3Settings } = this.props.state;
     const isConnected = web3Settings.isWeb3Connected;
+    const isConnecting = web3Settings.isConnecting;
     const isCorrectNetwork = web3Settings.networkId === web3Settings.deployingNetworkId;
+    const walletAvailable = web3Settings.walletAvailable;
+    const connectionError = web3Settings.connectionError;
 
     var addGuildsCard = [{
       header: "Or you can add new Guilds to the Whitelist...",
@@ -147,6 +159,28 @@ class Guilds extends Component{
           <br />
           <br />
 
+          {/* Show connection error */}
+          {connectionError && (
+            <Container>
+              <Message error onDismiss={this.props.clearError}>
+                <Message.Header>Connection Error</Message.Header>
+                <p>{connectionError}</p>
+                {!walletAvailable && (
+                  <p>
+                    <a
+                      href="https://metamask.io/download/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{color: '#2185d0', textDecoration: 'underline'}}
+                    >
+                      Download MetaMask
+                    </a>
+                  </p>
+                )}
+              </Message>
+            </Container>
+          )}
+
           {isConnected ? (
             isCorrectNetwork ? (
               <div className={styles.home__feature}>
@@ -171,6 +205,7 @@ class Guilds extends Component{
                         selection
                         options={dropdownList()}
                         onChange={this.dropDownChanged}
+                        value={this.state.guildAddress}
                       />
                     </div>
                     <div className={styles.margin5}>
@@ -178,6 +213,7 @@ class Guilds extends Component{
                         placeholder="Insert TokenId"
                         type='number'
                         min={1}
+                        max={10000}
                         value={this.state.tokenId}
                         onChange={event => this.setState({tokenId: event.target.value})}
                       />
@@ -188,6 +224,7 @@ class Guilds extends Component{
                   <Button
                     disabled={this.state.tokenId.length === 0 || this.state.guildAddress.length === 0}
                     secondary
+                    loading={this.state.loading > 0}
                   >
                     Claim Traveler Loot for Guilds
                   </Button>
@@ -218,9 +255,33 @@ class Guilds extends Component{
               <Container style={{color: "white"}}>
                 <div style={{padding: "5px"}}>
                   <div className="text-center">
-                    <Button className="hover:text-white mx-2" secondary onClick={this.props.connect}>
-                      Connect Wallet
+                    <Button
+                      className="hover:text-white mx-2"
+                      secondary
+                      onClick={this.props.connect}
+                      loading={isConnecting}
+                      disabled={isConnecting}
+                    >
+                      {isConnecting ? 'Connecting...' : 'Connect Wallet'}
                     </Button>
+
+                    {!walletAvailable && (
+                      <div style={{marginTop: '15px'}}>
+                        <p style={{color: '#999', marginBottom: '10px'}}>
+                          No wallet detected
+                        </p>
+                        <Button
+                          as="a"
+                          href="https://metamask.io/download/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          basic
+                          color="orange"
+                        >
+                          Install MetaMask
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </Container>
